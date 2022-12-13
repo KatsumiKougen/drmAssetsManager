@@ -11,7 +11,7 @@ def Assets():
 
 currentid = int(open("./currentid", "r").read())
 target = open("./target", "r").read()[:-1].split()
-template = "others-%.png"
+template = "misc-%.png"
 
 print(
     f"Current directory: {os.getcwd()}\n"
