@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 
 def Assets():
@@ -9,7 +11,7 @@ def Assets():
 
 currentid = int(open("./currentid", "r").read())
 target = open("./target", "r").read()[:-1].split()
-template = "nobita-others-%.png"
+template = "others-%.png"
 
 print(
     f"Current directory: {os.getcwd()}\n"
