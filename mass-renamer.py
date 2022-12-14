@@ -11,7 +11,7 @@ def Assets():
 
 currentid = int(open("./currentid", "r").read())
 target = Assets()
-template = "doraemon-%.jpg"
+template = "gian-%.jpg"
 
 print(
     f"Current directory: {os.getcwd()}\n"
