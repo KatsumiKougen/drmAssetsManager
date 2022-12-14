@@ -5,13 +5,13 @@ import os
 def Assets():
     assets = os.listdir()
     for i in assets:
-        if "doremonche" not in i:
+        if "ma_" not in i:
             assets.remove(i)
     return assets
 
 currentid = int(open("./currentid", "r").read())
 target = Assets()
-template = "others-%.jpg"
+template = "doraemon-nobita-%.jpg"
 
 print(
     f"Current directory: {os.getcwd()}\n"
@@ -21,11 +21,11 @@ print(
 if len(target) > 0:
     print(f"The following {len(target)} files will be renamed:")
     for i in target:
-        print(i, end=" ")
+        print(f"{i}.jpg", end=" ")
     confirm = input(f"\nusing the template \"{template}\"\nDo you wish to continue? (Y to confirm) ")
     if confirm.lower() == "y":
         for i in target:
-            os.rename(f"{i}", template.replace("%", f"{currentid:010}"))
+            os.rename(f"{i}.jpg", template.replace("%", f"{currentid:010}"))
             currentid += 1
         with open("./currentid", "w") as f:
             f.write(str(currentid))
