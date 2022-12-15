@@ -3,15 +3,16 @@
 import os
 
 def Assets():
-    assets = os.listdir()
-    for i in assets:
-        if "ma_" not in i:
-            assets.remove(i)
+    dir_ = os.listdir()
+    assets = []
+    for i in dir_:
+        if ".jpg" in i and i not in ["LICENSE", "mass-renamer.py", "renamer.py", "target", "currentid", "assets"]:
+            assets.append(i)
     return assets
 
 currentid = int(open("./currentid", "r").read())
 target = Assets()
-template = "doraemon-nobita-%.jpg"
+template = "doraemon-gian-nobita-shizuka-suneo-%.jpg"
 
 print(
     f"Current directory: {os.getcwd()}\n"
@@ -21,11 +22,11 @@ print(
 if len(target) > 0:
     print(f"The following {len(target)} files will be renamed:")
     for i in target:
-        print(f"{i}.jpg", end=" ")
+        print(f"{i}", end=" ")
     confirm = input(f"\nusing the template \"{template}\"\nDo you wish to continue? (Y to confirm) ")
     if confirm.lower() == "y":
         for i in target:
-            os.rename(f"{i}.jpg", template.replace("%", f"{currentid:010}"))
+            os.rename(f"{i}", template.replace("%", f"{currentid:010}"))
             currentid += 1
         with open("./currentid", "w") as f:
             f.write(str(currentid))
